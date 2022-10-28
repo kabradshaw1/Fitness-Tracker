@@ -1,6 +1,4 @@
 const Heart = require('./Heart.js');
-const Steps = require('./Steps');
-const Weight = require('./Weight');
 const User = require('./User')
 
 User.hasMany(Heart, {
@@ -12,4 +10,4 @@ Heart.belongsTo(User, {
   onDelete: 'SET NULL'
 })
 
-module.exports = { Heart, Steps, Weight, User};
+module.exports = { Heart, User};

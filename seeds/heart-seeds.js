@@ -116,6 +116,6 @@ const heartData = [
   }
 ]
 
-const seedHeart = () => seedHeart.bulkCreate(heartData);
+const seedHeart = () => Heart.bulkCreate(heartData);
 
 module.export = seedHeart;
