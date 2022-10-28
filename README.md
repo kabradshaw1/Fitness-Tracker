@@ -6,7 +6,7 @@ In the cmd type in the following commands:
 
 npm init -y
 
-npm i connect-session-sequelize dotenv express-handlebars mysql2 express-session bcrypt sequelize
+npm i connect-session-sequelize dotenv express-handlebars mysql2 express-session bcrypt sequelize express 
 
 mysql -u <username> -p
 * Put in your password
@@ -18,6 +18,9 @@ create a new file named .env in the root directory.  The folder should contain t
 DB_NAME='fitness_tracker_db'
 DB_USER=''
 DB_PW=''
+
+To seed the database type into the cmd:
+npm run seeds
 
 To run the server type into cmd:
 npm start
