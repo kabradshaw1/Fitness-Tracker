@@ -11,6 +11,7 @@ Heart.init(
       primaryKey: true,
       autoIncrement: true
     },
+    // needs more code
   },
   {
     sequelize,
