@@ -19,5 +19,8 @@ DB_NAME='fitness_tracker_db'
 DB_USER=''
 DB_PW=''
 
+To seed the database type into the cmd:
+npm run seeds
+
 To run the server type into cmd:
 npm start
