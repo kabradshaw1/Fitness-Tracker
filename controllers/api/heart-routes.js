@@ -34,7 +34,8 @@ router.get('/:id', (req, res) => {
       'id',
       'max',
       'min',
-      'date'
+      'date',
+      'avg'
     ],
     include: [
       {
