@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
       'id',
       'max',
       'min',
-      'date'
+      'date',
     ],
     include: [
       {
@@ -52,13 +52,13 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
   Heart.create({
-    max: req.body.Max,
-    min: req.body.Min,
+    max: req.body.max,
+    min: req.body.min,
     user_id: req.body.user_id,
-    avg: req.body.Avg,
+    avg: req.body.avg,
     date: req.body.date
   })
-  .then(dbPostData => res.json(dbPostData))
+  .then(dbHeartData => res.json(dbHeartData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -71,12 +71,12 @@ router.delete('/:id', withAuth, (req, res) => {
       id: req.params.id
     }
   })
-  .then(dbPostData => {
-    if (!dbPostData) {
+  .then(dbHeartData => {
+    if (!dbHeartData) {
       res.status(404).json({ message: 'No post found with this id' });
       return;
     }
-    res.json(dbPostData);
+    res.json(dbHeartData);
   })
   .catch(err => {
     console.log(err);
