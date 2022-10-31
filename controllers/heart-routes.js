@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Heart, User } = require('../../models');
+const { Heart, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -24,11 +24,7 @@ router.get('/', withAuth, (req, res) => {
   })
   .then(dbheartData => {
     const heart_rate = dbheartData.map(heart => heart.get({ plain: true }));
-
-    res.render('heart', {
-      heart_rate,
-      loggedIn: req.session.loggedIn
-    });
+    res.render('heart', { heart_rate, loggedIn: true });
   })
     .catch(err => {
       console.log(err);
