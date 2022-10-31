@@ -1,9 +1,14 @@
 const router = require('express').Router();
 const { Heart, User } = require('../../models');
-const withAuth = require('../../utils/auth');
+const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
+  console.log(req.session);
+  console.log('======================');
   Heart.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
     attributes: [
       'id',
       'max',
@@ -30,3 +35,5 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+module.exports = router;
