@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  Heart.findOne({
+  Steps.findOne({
     where: {
       id: req.params.id
     },
@@ -64,7 +64,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Heart.destroy({
+  Steps.destroy({
     where: {
       id: req.params.id
     }
