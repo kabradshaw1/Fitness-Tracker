@@ -16,16 +16,70 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then(dbstepsData => {
-    const step_count = dbstepsData.map(steps => steps.get({ plain: true }));
-
-    res.render('steps', {
-      step_count,
-      loggedIn: req.session.loggedIn
-    });
-  })
+  .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+
+
+router.get('/:id', (req, res) => {
+  Heart.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'max',
+      'min',
+      'date',
+      'avg'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbStepsData => res.json(dbStepsData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post('/', withAuth, (req, res) => {
+  Steps.create({
+    qty: req.body.qty,
+    user_id: req.body.user_id,
+    date: req.body.date
+  })
+  .then(dbStepsData => res.json(dbStepsData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+  Heart.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbStepsData => {
+    if (!dbStepsData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+    res.json(dbStepsData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+module.exports = router;
