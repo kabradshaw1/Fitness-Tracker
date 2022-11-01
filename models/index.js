@@ -1,5 +1,6 @@
 const Heart = require('./Heart');
-const User = require('./User')
+const User = require('./User');
+const Active = require('./Active');
 
 User.hasMany(Heart, {
   foreignKey: 'user_id'
@@ -8,6 +9,15 @@ User.hasMany(Heart, {
 Heart.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
-})
+});
 
-module.exports = { Heart, User };
+User.hasMany(Active, {
+  foreignKey: 'user_id'
+});
+
+Active.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+module.exports = { Heart, User, Active };

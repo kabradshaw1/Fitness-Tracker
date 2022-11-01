@@ -3,6 +3,7 @@ const { Active, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
+  console.log(req.session);
   console.log('======================');
   Active.findAll({
     where: {
