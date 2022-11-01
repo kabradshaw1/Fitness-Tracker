@@ -1,5 +1,4 @@
 
-
 const { Active } = require('../models');
 
 const activeData = [
@@ -130,6 +129,6 @@ const activeData = [
 }
 ]
 
-const seedsActive = () => Active.bulkCreate(activeData);
+const seedActive = () => Active.bulkCreate(activeData);
 
-module.exports = seedsActive;
+module.exports = seedActive;
