@@ -7,5 +7,10 @@ const activeRoutes = require('./active-routes')
 router.use('/heart', heartRoutes);
 router.use('/user', userRoutes)
 router.use('/active', activeRoutes)
+const stepsRoutes = require('./steps-routes');
+
+router.use('/heart', heartRoutes);
+router.use('/user', userRoutes);
+router.use('/steps', stepsRoutes);
 
 module.exports = router;
