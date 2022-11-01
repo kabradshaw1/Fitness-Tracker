@@ -20,5 +20,14 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kabradshaw1/Fitness-Tracker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/kabradshaw1/Fitness-Tracker/issues"
+  },
+  "homepage": "https://github.com/kabradshaw1/Fitness-Tracker#readme"
 }
