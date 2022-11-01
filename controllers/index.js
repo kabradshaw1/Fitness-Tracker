@@ -10,7 +10,6 @@ router.use('/', homeRoutes);
 router.use('/active', activeRoutes);
 router.use('/heart', heartRoutes);
 router.use('/api', apiRoutes);
-router.use('/', homeRoutes);
 router.use('/steps', stepsRoutes);
 
 

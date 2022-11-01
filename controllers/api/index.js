@@ -6,6 +6,6 @@ const stepsRoutes = require('./steps-routes');
 
 router.use('/heart', heartRoutes);
 router.use('/user', userRoutes);
-router.use('/steps', stepsRoutes)
+router.use('/steps', stepsRoutes);
 
 module.exports = router;
