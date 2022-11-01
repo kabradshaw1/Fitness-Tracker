@@ -1,5 +1,22 @@
+$('#heart-form').submit(async event => {
+  const average = $('[name="average-input"]').val()
+  const max = $('[name="max-input"]').val()
+  const min = $('[name="min-input"]').val()
 
-console.log('javascript test');
+  const response = await fetch(`/api/heart/${id}`, {
+    method: 'POST',
+      body: JSON.stringify({
+        average,
+        max,
+        min
+        
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+  })
+})
+
 async function getHeart() {
   await fetch('http://localhost:3001/api/heart', data => {
     console.log('javascript test 2')
