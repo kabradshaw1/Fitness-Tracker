@@ -56,6 +56,7 @@ getHeart = () => {
 // })
 
 const displayGraph = (data) => {
+  console.log(data)
   const width = 800;
   const height = 400;
   const margin = { top: 50, bottom: 50, left: 50, right: 50};
@@ -73,16 +74,16 @@ const displayGraph = (data) => {
 
   const y = d3.scaleLinear()
     .domain([0, 150])
-    .range([height - margin.bottom, margin.top])
+    .range([height - margin.bottom, margin.top]);
   svg
     .append('g')
     .attr('fill', 'royalblue')
     .selectAll('rect')
     .join('rect')
       .attr('x', (d, i) => x(i))
-      .attr('y', (d) => y(d.parseInt(max)))
-      .attr('height', d => y(0) - y(d.parseInt(max)))
-      .attr('width', x.bandwidth())
+      .attr('y', (d) => y(d.max))
+      .attr('height', d => y(0) - y(d.max))
+      .attr('width', x.bandwidth());
 
   svg.node();
 }
