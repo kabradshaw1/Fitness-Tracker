@@ -1,11 +1,13 @@
 data = []
-console.log(data)
-$('#heart-form').submit(async event => {
+
+async function heartFormHandler(event) {
+  event.preventDefault();
+
   const average = $('[name="average-input"]').val()
   const max = $('[name="max-input"]').val()
   const min = $('[name="min-input"]').val()
 
-  const response = await fetch('/api/heart/', {
+  const response = await fetch('/api/heart', {
     method: 'POST',
       body: JSON.stringify({
         average,
@@ -22,7 +24,7 @@ $('#heart-form').submit(async event => {
   } else {
     alert(response.statusText);
   }
-})
+}
 
 getHeart = () => {
 
@@ -31,6 +33,7 @@ getHeart = () => {
       if(response.ok) {
         response.json().then(function(data) {
           data = data;
+          console.log(data)
         })
       } else {
         alert('Error: Item Not Found');
@@ -49,9 +52,6 @@ getHeart = () => {
     // })
 //   })
 // }
-
-getHeart()
-
 
 // d3.json('http://localhost:3001/api/heart', function (d) {
 //   console.log(d)
@@ -86,3 +86,5 @@ getHeart()
 
 // svg.node();
 
+document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
+getHeart()
