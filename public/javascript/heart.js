@@ -25,67 +25,53 @@ async function heartFormHandler(event) {
   }
 }
 
-getHeart = () => {
-
-  fetch('/api/heart')
-    .then(response => {
-      if(response.ok) {
-        response.json().then(function(data) {
-          displayGraph(data)
-        })
-      } else {
-        alert('Error: Item Not Found');
-      }
-    })
-    .catch(function(error) {
-      alert("Unable to get items.")
-    })
-}
-// async function getHeart() {
-//   await fetch('http://localhost:3001/api/heart', data => {
-//     console.log('javascript test 2')
-
-    // data.json().then(function(json) {
-    //   console.log(json)
-    // })
-//   })
-// }
-
-// d3.json('http://localhost:3001/api/heart', function (d) {
-//   console.log(d)
-// })
+d3.json("/api/heart").then(data => displayGraph(data))
 
 const displayGraph = (data) => {
   console.log(data)
-  const width = 800;
-  const height = 400;
-  const margin = { top: 50, bottom: 50, left: 50, right: 50};
+  const chart = d3.select('#d3-container')
+    .classed('graph', true)
+  
+  const bar = chart
+    .selectAll('bar')
+    .data(data)
+    .enter()
+    .append('rect')
+    .classed('bar', true)
+    .attr('width')
+    // .attr('height', data => data.max )
+  
 
-  const svg = d3.select('#d3-container')
-    .append('svg')
-    .attr('height', height - margin.top - margin.bottom)
-    .attr('width', width - margin.left - margin.right)
-    .attr('viewBox', [0, 0, width, height]);
+  // const width = 800;
+  // const height = 400;
+  // const margin = { top: 50, bottom: 50, left: 50, right: 50};
 
-  const x = d3.scaleBand()
-    .domain(d3.range(data.length))
-    .range([margin.left, width - margin.right])
-    .padding(0.1);
+ 
+  // const svg = d3.select('#d3-container')
+  //   .append('svg')
+  //   .attr('height', height - margin.top - margin.bottom)
+  //   .attr('width', width - margin.left - margin.right)
+  //   .attr('viewBox', [0, 0, width, height]);
 
-  const y = d3.scaleLinear()
-    .domain([0, 150])
-    .range([height - margin.bottom, margin.top]);
-  svg
-    .append('g')
-    .attr('fill', 'royalblue')
-    .selectAll('rect')
-    .join('rect')
-      .attr('x', (d, i) => x(i))
-      .attr('y', (d) => y(d.max))
-      .attr('height', d => y(0) - y(d.max))
-      .attr('width', x.bandwidth());
+  // const x = d3.scaleBand()
+  //   .domain(d3.range(data.length))
+  //   .range([margin.left, width - margin.right])
+  //   .padding(0.1);
 
-  svg.node();
+  // const y = d3.scaleLinear()
+  //   .domain([0, 180])
+  //   .range([height - margin.bottom, margin.top]);
+  // svg
+  //   .append('g')
+  //   .attr('fill', 'royalblue')
+  //   .selectAll('rect')
+  //   .join('rect')
+  //     .attr('x', (d, i) => x(i))
+  //     .attr('y', (d) => y(d.max))
+  //     .attr('height', d => y(0) - y(d.max))
+  //     .attr('width', x.bandwidth());
+
+  // svg.node();
 }
 document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
-getHeart()
+
