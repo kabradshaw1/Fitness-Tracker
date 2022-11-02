@@ -28,22 +28,22 @@ d3.json("/api/heart").then(data => displayGraph(data))
 
 const displayGraph = (data) => {
  
-  const dummy_data = [
-    {id:'d1', value:10, region:'USA'},
-    {id:'d2', value:11, region:'india'},
-    {id:'d1', value:12, region:'China'}
-  ]
-  const chart = d3.select('#d3-container')
-    .classed('graph', true)
-  
-  const bar = chart
-    .selectAll('.bar')
-    .data(dummy_data)
+const chart = d3.select('#d3-container')
+
+chart
+  .selectAll('.div')
+    .data(data)
     .enter()
     .append('div')
-    .classed('.bar', true)
-    .style('width', '50px')
-    .style('height', '150px')
+    .classed('bar', true)
+    .style('width', '40px')
+    .style('height', dta=>(dta.max * 2) + 'px');
+  //   .data(dummy_data)
+  //   .enter()
+  //   .append('div')
+  //   .classed('.bar', true)
+  //   .style('width', '50px')
+  //   .style('height', '150px')
   
 
   // const width = 800;
