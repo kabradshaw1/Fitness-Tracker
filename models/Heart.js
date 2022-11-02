@@ -12,17 +12,17 @@ Heart.init(
       autoIncrement: true
     },
     max: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isDecimal: true
+        isInteger: true
       }
     },
     min: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isDecimal: true
+        isInteger: true
       }
     },
     date: {
@@ -33,7 +33,7 @@ Heart.init(
       }
     },
     avg: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(2,0),
       allowNull: false,
       validate: {
         isDecimal: true

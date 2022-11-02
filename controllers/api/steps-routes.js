@@ -1,13 +1,12 @@
 const router = require('express').Router();
-const { Heart, User } = require('../../models');
+const { Steps, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-  Heart.findAll({
+  Steps.findAll({
     attributes: [
       'id',
-      'max',
-      'min',
+      'qty',
       'date',
     ],
     include: [
@@ -17,7 +16,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbHeartData => res.json(dbHeartData))
+  .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -26,16 +25,14 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  Heart.findOne({
+  Steps.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
       'id',
-      'max',
-      'min',
-      'date',
-      'avg'
+      'qty',
+      'date'
     ],
     include: [
       {
@@ -44,7 +41,7 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(dbHeartData => res.json(dbHeartData))
+    .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -52,13 +49,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  Heart.create({
-    max: req.body.max,
-    min: req.body.min,
-    user_id: req.session.user_id,
-    avg: req.body.avg,
+  Steps.create({
+    qty: req.body.qty,
+    user_id: req.body.user_id,
+    date: req.body.date
   })
-  .then(dbHeartData => res.json(dbHeartData))
+  .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -66,17 +62,17 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Heart.destroy({
+  Steps.destroy({
     where: {
       id: req.params.id
     }
   })
-  .then(dbHeartData => {
-    if (!dbHeartData) {
+  .then(dbStepsData => {
+    if (!dbStepsData) {
       res.status(404).json({ message: 'No post found with this id' });
       return;
     }
-    res.json(dbHeartData);
+    res.json(dbStepsData);
   })
   .catch(err => {
     console.log(err);
