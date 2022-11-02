@@ -28,23 +28,27 @@ d3.json("/api/heart").then(data => displayGraph(data))
 
 const displayGraph = (data) => {
  
-const chart = d3.select('#d3-container')
+  const xScale = d3
+    .scaleBand()
+    .domain(data.map(dataPoint => dataPoint.max))
+    .rangeRound([0, 800])
+    .padding(0.1);  
+  const yScale = d3.scaleLinear().domain([0, 180]).range([400, 0]);
 
-chart
-  .selectAll('.div')
-    .data(data)
-    .enter()
-    .append('div')
-    .classed('bar', true)
-    .style('width', '40px')
-    .style('height', dta=>(dta.max * 2) + 'px');
-  //   .data(dummy_data)
-  //   .enter()
-  //   .append('div')
-  //   .classed('.bar', true)
-  //   .style('width', '50px')
-  //   .style('height', '150px')
-  
+  const chart = d3.select('#d3-container')
+
+  const bars = chart
+    .selectAll('.bar')
+      .data(data)
+      .enter()
+      .append('rect')
+      .classed('bar', true)
+      .attr('width', xScale.bandwidth())
+      .attr('height', dta=>yScale(dta.max))
+      .attr('x', dta = xScale(dta.max))
+      .attr('y', dta = yScale(dta.max));
+
+    
 
   // const width = 800;
   // const height = 400;
