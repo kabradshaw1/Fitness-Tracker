@@ -3,18 +3,23 @@ $('#heart-form').submit(async event => {
   const max = $('[name="max-input"]').val()
   const min = $('[name="min-input"]').val()
 
-  const response = await fetch(`/api/heart/${id}`, {
+  const response = await fetch('/api/heart/', {
     method: 'POST',
       body: JSON.stringify({
         average,
         max,
         min
-        
       }),
       headers: {
         'Content-Type': 'application/json'
       }
   })
+
+  if (response.ok) {
+    document.location.reload()
+  } else {
+    alert(response.statusText);
+  }
 })
 
 async function getHeart() {
