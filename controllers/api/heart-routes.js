@@ -55,9 +55,8 @@ router.post('/', withAuth, (req, res) => {
   Heart.create({
     max: req.body.max,
     min: req.body.min,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     avg: req.body.avg,
-    date: req.body.date
   })
   .then(dbHeartData => res.json(dbHeartData))
     .catch(err => {

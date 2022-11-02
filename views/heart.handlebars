@@ -4,7 +4,25 @@
 
   {{/each}}
 {{/if}}
-<div class="graph" id="heart"></div>
+<div class='graph' id="d3-container"></div>
+<h2>New Entry</h2>
+<form id="heart-form">
+  <div>
+    <label for="average-input">average:</label>
+    <input type="text" id="average-input" />
+  </div>
+  <div>
+    <label for="max-input">max:</label>
+    <input type="text" id="max-input" />
+  </div>
+  <div>
+    <label for="min-input">min:</label>
+    <input type="text" id="min-input" />
+  </div>
+  <div>
+    <button type="submit">Add</button>
+  </div>
+</form>
 
-<script src="/javascript/heart.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="/javascript/heart.js"></script>
