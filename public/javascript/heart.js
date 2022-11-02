@@ -1,3 +1,5 @@
+data = []
+console.log(data)
 $('#heart-form').submit(async event => {
   const average = $('[name="average-input"]').val()
   const max = $('[name="max-input"]').val()
@@ -22,14 +24,31 @@ $('#heart-form').submit(async event => {
   }
 })
 
-async function getHeart() {
-  await fetch('http://localhost:3001/api/heart', data => {
-    console.log('javascript test 2')
+getHeart = () => {
+
+  fetch('/api/heart')
+    .then(response => {
+      if(response.ok) {
+        response.json().then(function(data) {
+          data = data;
+        })
+      } else {
+        alert('Error: Item Not Found');
+      }
+    })
+    .catch(function(error) {
+      alert("Unable to get items.")
+    })
+}
+// async function getHeart() {
+//   await fetch('http://localhost:3001/api/heart', data => {
+//     console.log('javascript test 2')
+
     // data.json().then(function(json) {
     //   console.log(json)
     // })
-  })
-}
+//   })
+// }
 
 getHeart()
 
