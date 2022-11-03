@@ -62,10 +62,12 @@ const distanceData = [
 		date : "2022-10-09 00:00:00 -0400"
 	},
 	{
+		user_id: 1,
 		date : "2022-10-10 00:00:00 -0400",
 		qty : 7.7038097510544699
 	},
 	{
+		user_id: 1,
 		date : "2022-10-11 00:00:00 -0400",
 		qty : 7.8954157718932727
 	},
@@ -154,8 +156,8 @@ const distanceData = [
 		date : "2022-10-28 00:00:00 -0400",
 		qty : 0.033920653384432814
 	}
-	]
+	];
 
-const seedDistance = () => Distance.bulkCreate(distanceData);
+	const seedDistance = () => Distance.bulkCreate(distanceData);
 
-module.exports = seedDistance;
+	module.exports = seedDistance;

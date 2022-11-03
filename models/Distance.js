@@ -19,10 +19,10 @@ Distance.init(
       }
     },
     qty: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
-        isInteger: true
+        isDecimal: true
       }
     },
     user_id: {
