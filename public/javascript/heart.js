@@ -1,9 +1,9 @@
 async function heartFormHandler(event) {
   event.preventDefault();
 
-  const average = $('[name="average-input"]').val()
-  const max = $('[name="max-input"]').val()
-  const min = $('[name="min-input"]').val()
+  const average = document.querySelector('#average-input').value.trim();
+  const max = document.querySelector('#max-input').value.trim();
+  const min = document.querySelector('#min-input').value.trim();
 
   const response = await fetch('/api/heart', {
     method: 'POST',
@@ -21,13 +21,12 @@ async function heartFormHandler(event) {
     document.location.reload()
   } else {
     alert(response.statusText);
-  }
-}
+  };
+};
 
-d3.json("/api/heart").then(data => displayGraph(data))
+d3.json("/api/heart").then(data => displayGraph(data));
 
 const displayGraph = (data) => {
-  console.log(data)
   const xScale = d3
     .scaleBand()
     .domain(data.map(dataPoint => dataPoint.id))
@@ -48,40 +47,7 @@ const displayGraph = (data) => {
       .attr('width', xScale.bandwidth())
       .attr('height', d =>400 - yScale(d.max))
       .attr('x', d => xScale(d.id))
-      .attr('y', d => yScale(d.max))
-
-    
-
-  // const width = 800;
-  // const height = 400;
-  // const margin = { top: 50, bottom: 50, left: 50, right: 50};
-
- 
-  // const svg = d3.select('#d3-container')
-  //   .append('svg')
-  //   .attr('height', height - margin.top - margin.bottom)
-  //   .attr('width', width - margin.left - margin.right)
-  //   .attr('viewBox', [0, 0, width, height]);
-
-  // const x = d3.scaleBand()
-  //   .domain(d3.range(data.length))
-  //   .range([margin.left, width - margin.right])
-  //   .padding(0.1);
-
-  // const y = d3.scaleLinear()
-  //   .domain([0, 180])
-  //   .range([height - margin.bottom, margin.top]);
-  // svg
-  //   .append('g')
-  //   .attr('fill', 'royalblue')
-  //   .selectAll('rect')
-  //   .join('rect')
-  //     .attr('x', (d, i) => x(i))
-  //     .attr('y', (d) => y(d.max))
-  //     .attr('height', d => y(0) - y(d.max))
-  //     .attr('width', x.bandwidth());
-
-  // svg.node();
+      .attr('y', d => yScale(d.max));
 }
 document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
 
