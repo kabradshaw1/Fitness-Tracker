@@ -39,7 +39,11 @@ const displayGraph = (data) => {
     .range([400, 0]);
 
   const chart = d3.select('#d3-container');
-  
+  const chart_date = data.map(d => {
+    const date = new Date(d.date);
+    const newDate = date.getDate();
+    return newDate;
+ });
   const bar = chart
     .selectAll('.bar')
         .data(data)
