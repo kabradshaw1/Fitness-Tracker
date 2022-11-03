@@ -14,9 +14,6 @@ Heart.init(
     max: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isInteger: true
-      }
     },
     date: {
       type: DataTypes.DATE,

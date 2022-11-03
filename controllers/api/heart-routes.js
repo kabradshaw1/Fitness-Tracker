@@ -52,6 +52,7 @@ router.post('/', withAuth, (req, res) => {
   Heart.create({
     max: req.body.max,
     user_id: req.session.user_id,
+    date: req.body.date
   })
   .then(dbHeartData => res.json(dbHeartData))
     .catch(err => {
