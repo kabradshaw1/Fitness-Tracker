@@ -43,11 +43,6 @@ const displayGraph = (data) => {
       return { ...d, date:newDate }
    });
   const chart = d3.select('#d3-container');
-//   const chart_date = data.map(d => {
-//     const date = new Date(d.date);
-//     const newDate = date.getDate();
-//     return newDate;
-//  });
   
   const bar = chart
     .selectAll('.bar')
@@ -68,6 +63,5 @@ const displayGraph = (data) => {
       .text(d => d.date)
       .attr('x', d => xScale(d.id))
       .attr('y', 395);
-  // const axies = d3.select('#graph-xaxies')
 };
 
