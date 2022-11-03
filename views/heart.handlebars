@@ -1,10 +1,15 @@
-{{#if heart.length}}
+<svg class='graph' id="d3-container"></svg>
+<h2>New Entry</h2>
+<form id="heart-form">
+  <div>
+    <label for="max-input">max:</label>
+    <input type="text" id="max-input" />
+  </div>
+  <div>
+    <button type="submit">Add</button>
+  </div>
+</form>
 
-  {{#each heart as |heart|}}
-
-  {{/each}}
-{{/if}}
-<div class="graph" id="heart"></div>
-
-<script src="/javascript/heart.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
+<script src="/javascript/heart.js"></script>

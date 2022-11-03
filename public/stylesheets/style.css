@@ -1,7 +1,12 @@
 .graph {
-  height: 500px;
+  /* background-color: rgb(211, 211, 218); */
   width: 800px;
-  background-color: rgb(211, 211, 218);
+  height: 400px;
+  border: 1px solid royalblue;
+}
+
+.bar {
+  fill: royalblue;
 }
 .home-page-link {
   font-size: medium;

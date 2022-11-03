@@ -1,19 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Heart extends Model {}
+class Distance extends Model {}
 
-Heart.init(
+Distance.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
-    },
-    max: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     date: {
       type: DataTypes.DATE,
@@ -22,10 +18,17 @@ Heart.init(
         isDate: true
       }
     },
+    qty: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInteger: true
+      }
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'distance',
         key: 'id'
       }
     }
@@ -34,8 +37,8 @@ Heart.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'heart'
+    modelName: 'distance'
   }
 )
 
-module.exports = Heart;
+module.exports = Distance;

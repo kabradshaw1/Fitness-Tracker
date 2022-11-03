@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Heart, User } = require('../../models');
+const { Distance, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-  Heart.findAll({
+  Distance.findAll({
     attributes: [
       'id',
-      'max',
+      'qty',
       'date',
     ],
     include: [
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbHeartData => res.json(dbHeartData))
+  .then(dbDistanceData => res.json(dbDistanceData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -25,14 +25,14 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  Heart.findOne({
+  Distance.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
       'id',
-      'max',
-      'date',
+      'qty',
+      'date'
     ],
     include: [
       {
@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(dbHeartData => res.json(dbHeartData))
+    .then(dbDistanceData => res.json(dbDistanceData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -49,12 +49,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  Heart.create({
-    max: req.body.max,
-    user_id: req.session.user_id,
+  Distance.create({
+    qty: req.body.qty,
+     // please change to user_id: req.session.user_id and delete this comment
+    user_id: req.body.user_id,
     date: req.body.date
   })
-  .then(dbHeartData => res.json(dbHeartData))
+  .then(dbDistanceData => res.json(dbDistanceData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -62,17 +63,17 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Heart.destroy({
+  Distance.destroy({
     where: {
       id: req.params.id
     }
   })
-  .then(dbHeartData => {
-    if (!dbHeartData) {
+  .then(dbDistanceData => {
+    if (!dbDistanceData) {
       res.status(404).json({ message: 'No post found with this id' });
       return;
     }
-    res.json(dbHeartData);
+    res.json(dbDistanceData);
   })
   .catch(err => {
     console.log(err);

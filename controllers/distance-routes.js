@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const { Heart, User } = require('../models');
+const { Distance, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
-  Heart.findAll({
+  Distance.findAll({
     where: {
       user_id: req.session.user_id
     },
     attributes: [
       'id',
-      'max',
+      'qty',
       'date',
     ],
     include: [
@@ -21,9 +21,9 @@ router.get('/', withAuth, (req, res) => {
       }
     ]
   })
-  .then(dbheartData => {
-    const heart_rate = dbheartData.map(heart => heart.get({ plain: true }));
-    res.render('heart', { heart_rate, loggedIn: true });
+  .then(dbdistanceData => {
+    const distance_count = dbdistanceData.map(distance => distance.get({ plain: true }));
+    res.render('distance', { distance_count, loggedIn: true });
   })
     .catch(err => {
       console.log(err);
