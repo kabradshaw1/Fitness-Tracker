@@ -27,26 +27,27 @@ async function heartFormHandler(event) {
 d3.json("/api/heart").then(data => displayGraph(data))
 
 const displayGraph = (data) => {
- 
+  
   const xScale = d3
     .scaleBand()
-    .domain(data.map(dataPoint => dataPoint.max))
-    .rangeRound([0, 800])
-    .padding(0.1);  
-  const yScale = d3.scaleLinear().domain([0, 180]).range([400, 0]);
+    .domain(data.map(dataPoint => dataPoint.id))
+    .rangeRound([0, 800]).padding(0.1);  
+  const yScale = d3
+  .scaleLinear()
+  .domain([0, 180])
+  .range([400, 0]);
 
   const chart = d3.select('#d3-container')
 
   const bars = chart
     .selectAll('.bar')
-      .data(data)
       .enter()
       .append('rect')
       .classed('bar', true)
       .attr('width', xScale.bandwidth())
-      .attr('height', dta=>yScale(dta.max))
-      .attr('x', dta = xScale(dta.max))
-      .attr('y', dta = yScale(dta.max));
+      .attr('height', d =>400 - yScale(d.max))
+      .attr('x', d => xScale(d.id))
+      .attr('y', d => yScale(d.max));
 
     
 
