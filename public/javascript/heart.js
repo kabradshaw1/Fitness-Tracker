@@ -27,7 +27,7 @@ async function heartFormHandler(event) {
 d3.json("/api/heart").then(data => displayGraph(data))
 
 const displayGraph = (data) => {
-  
+  console.log(data)
   const xScale = d3
     .scaleBand()
     .domain(data.map(dataPoint => dataPoint.id))
@@ -41,13 +41,14 @@ const displayGraph = (data) => {
 
   const bars = chart
     .selectAll('.bar')
+      .data(data)
       .enter()
       .append('rect')
       .classed('bar', true)
       .attr('width', xScale.bandwidth())
       .attr('height', d =>400 - yScale(d.max))
       .attr('x', d => xScale(d.id))
-      .attr('y', d => yScale(d.max));
+      .attr('y', d => yScale(d.max))
 
     
 
