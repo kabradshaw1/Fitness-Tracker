@@ -6,7 +6,7 @@ In the cmd type in the following commands:
 
 npm init -y
 
-npm i connect-session-sequelize dotenv express-handlebars mysql2 express-session bcrypt sequelize express 
+npm i connect-session-sequelize dotenv express-handlebars mysql2 express-session bcrypt sequelize express
 
 mysql -u <username> -p
 * Put in your password

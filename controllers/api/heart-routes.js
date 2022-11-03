@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'max',
-      'min',
       'date',
     ],
     include: [
@@ -33,9 +32,7 @@ router.get('/:id', (req, res) => {
     attributes: [
       'id',
       'max',
-      'min',
       'date',
-      'avg'
     ],
     include: [
       {
@@ -54,9 +51,8 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Heart.create({
     max: req.body.max,
-    min: req.body.min,
     user_id: req.session.user_id,
-    avg: req.body.avg,
+    date: req.body.date
   })
   .then(dbHeartData => res.json(dbHeartData))
     .catch(err => {
