@@ -2,7 +2,8 @@ async function heartFormHandler(event) {
   event.preventDefault();
 
   const max = document.querySelector('#max-input').value.trim();
-  let date = new date();
+  const date = new Date();
+  console.log(date);
 
   const response = await fetch('/api/heart', {
     method: 'POST',
