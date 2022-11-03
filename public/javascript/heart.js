@@ -1,21 +1,19 @@
 async function heartFormHandler(event) {
   event.preventDefault();
 
-  const average = document.querySelector('#average-input').value.trim();
   const max = document.querySelector('#max-input').value.trim();
-  const min = document.querySelector('#min-input').value.trim();
+  // let date = new date();
 
   const response = await fetch('/api/heart', {
     method: 'POST',
       body: JSON.stringify({
-        average,
         max,
-        min
+        date
       }),
       headers: {
         'Content-Type': 'application/json'
       }
-  })
+  });
 
   if (response.ok) {
     document.location.reload()
@@ -48,6 +46,6 @@ const displayGraph = (data) => {
       .attr('height', d =>400 - yScale(d.max))
       .attr('x', d => xScale(d.id))
       .attr('y', d => yScale(d.max));
-}
-document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
+};
 
+document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
