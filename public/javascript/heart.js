@@ -37,33 +37,37 @@ const displayGraph = (data) => {
     // so, for example, if your highest data point is 1000, you want to go 1100.
     .domain([0, 180])
     .range([400, 0]);
-
+    const formatted = data.map(d => {
+      const date = new Date(d.date);
+      const newDate = date.getDate();
+      return { ...d, date:newDate }
+   });
   const chart = d3.select('#d3-container');
-  const chart_date = data.map(d => {
-    const date = new Date(d.date);
-    const newDate = date.getDate();
-    return newDate;
- });
+//   const chart_date = data.map(d => {
+//     const date = new Date(d.date);
+//     const newDate = date.getDate();
+//     return newDate;
+//  });
+  
   const bar = chart
     .selectAll('.bar')
-        .data(data)
-        .enter()
-        .append('rect')
-        .classed('bar', true)
-        .attr('width', xScale.bandwidth())
-        // you will need to change max to what ever variable you are trying to graph on this line and down in the y attribute
-        .attr('height', d =>400 - yScale(d.max))
-        .attr('x', d => xScale(d.id))
-        .attr('y', d => yScale(d.max));
+      .data(formatted)
+      .enter()
+      .append('rect')
+      .classed('bar', true)
+      .attr('width', xScale.bandwidth())
+      // you will need to change max to what ever variable you are trying to graph on this line and down in the y attribute
+      .attr('height', d =>400 - yScale(d.max))
+      .attr('x', d => xScale(d.id))
+      .attr('y', d => yScale(d.max));
   const dates = chart
     .selectAll('text')
-      .data(data)
+      .data(formatted)
       .enter()
       .append('text')
-      // .classed('chart-dates', true)
       .text(d => d.date)
       .attr('x', d => xScale(d.id))
-      .attr('y', 400);
-
+      .attr('y', 395);
+  // const axies = d3.select('#graph-xaxies')
 };
 
