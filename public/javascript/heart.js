@@ -3,7 +3,6 @@ async function heartFormHandler(event) {
 
   const max = document.querySelector('#max-input').value.trim();
   const date = new Date();
-  console.log(date);
 
   const response = await fetch('/api/heart', {
     method: 'POST',
@@ -33,15 +32,21 @@ const displayGraph = (data) => {
     .domain(data.map(dataPoint => dataPoint.id))
     .rangeRound([0, 800]).padding(0.1);  
   const yScale = d3
-  .scaleLinear()
-  // you will need to change the upper end of the domain, here it says 180, to be something slightly out of the range of your data.
-  // so, for example, if your highest data point is 1000, you want to go 1100.
-  .domain([0, 180])
-  .range([400, 0]);
-
-  const chart = d3.select('#d3-container')
+    .scaleLinear()
+    // you will need to change the upper end of the domain, here it says 180, to be something slightly out of the range of your data.
+    // so, for example, if your highest data point is 1000, you want to go 1100.
+    .domain([0, 180])
+    .range([400, 0]);
+    const formatted = data.map(d => {
+      const date = new Date(d.date);
+      const newDate = date.getDate();
+      return { ...d, date:newDate }
+   });
+  const chart = d3.select('#d3-container');
+  
+  const bar = chart
     .selectAll('.bar')
-      .data(data)
+      .data(formatted)
       .enter()
       .append('rect')
       .classed('bar', true)
@@ -50,5 +55,13 @@ const displayGraph = (data) => {
       .attr('height', d =>400 - yScale(d.max))
       .attr('x', d => xScale(d.id))
       .attr('y', d => yScale(d.max));
+  const dates = chart
+    .selectAll('text')
+      .data(formatted)
+      .enter()
+      .append('text')
+      .text(d => d.date)
+      .attr('x', d => xScale(d.id))
+      .attr('y', 395);
 };
 
