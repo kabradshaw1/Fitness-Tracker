@@ -23,6 +23,7 @@ async function heartFormHandler(event) {
 };
 
 document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
-
+// first number is range, and should be a number slightly higher 
+// than your highest value in your dataset
 chart(180, 'heart')
 
