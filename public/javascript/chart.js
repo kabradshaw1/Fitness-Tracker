@@ -14,7 +14,7 @@ const displayGraph = (data) => {
     .range([400, 0]);
     const formatted = data.map(d => {
       const date = new Date(d.date);
-      const newDate = date.getDate();
+      const newDate = (date.getMonth() + 1) + "/" + date.getDate()  ;
       return { ...d, date:newDate }
    });
   const chart = d3.select('#d3-container');
