@@ -1,11 +1,12 @@
-{{if loggedIn}}
-  <h2>Welcome {{user.name}}</h2>
+{{#if loggedIn}}
+  <h2>Welcome {{user.username}}</h2>
 
-<div class="page-links">
-  <a href="/heart" class="home-page-link">Heart</a>
-  <a href="/active" class="home-page-link">Active</a>
-  <a href="/steps">Steps</a>
-</div>
+  <div class="page-links">
+    <a href="/heart" class="home-page-link">Heart</a>
+    <a href="/active" class="home-page-link">Active</a>
+    <a href="/steps">Steps</a>
+  </div>
+  
 {{else}}
-
+  <h2>Welcome Vistor</h2>
 {{/if}}

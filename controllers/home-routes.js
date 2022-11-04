@@ -1,8 +1,17 @@
 const router = require('express').Router();
-const { User, Heart } = require('../models');
+const { User } = require('../models');
 
 router.get('/', (req, res) => {
-  res.render('homepage')
+  User.findOne({
+    where: {
+      id:req.session.id
+    },
+    attributes: [
+      'username'
+    ]
+
+  })
+  res.render('homepage', {loggedIn: req.session.loggedIn})
 });
 
 
