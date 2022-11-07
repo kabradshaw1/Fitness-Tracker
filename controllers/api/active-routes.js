@@ -52,8 +52,7 @@ router.get('/:id', (req, res) => {
 // by the client side js to graph the data.
 router.post('/', withAuth, (req, res) => {
   Active.create({
-    // please change to user_id: req.session.user_id and delete this comment
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     qty: req.body.qty,
     date: req.body.date
   })
@@ -62,6 +61,25 @@ router.post('/', withAuth, (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.delete('/:id', withAuth, (req, res) => {
+  Active.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbActiveData => {
+    if (!dbActiveData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+    res.json(dbActiveData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
