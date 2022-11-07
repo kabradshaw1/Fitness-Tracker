@@ -11,7 +11,7 @@ Heart.init(
       primaryKey: true,
       autoIncrement: true
     },
-    max: {
+    qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

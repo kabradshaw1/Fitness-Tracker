@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   Heart.findAll({
     attributes: [
       'id',
-      'max',
+      'qty',
       'date',
     ],
     include: [
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'max',
+      'qty',
       'date',
     ],
     include: [
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
   Heart.create({
-    max: req.body.max,
+    qty: req.body.qty,
     user_id: req.session.user_id,
     date: req.body.date
   })
