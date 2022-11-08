@@ -19,10 +19,17 @@ Distance.init(
       }
     },
     qty: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        isDecimal: true
+        isInteger: true
+      }
+    },
+    chart: {
+      type: DataTypes.STRING,
+      allowNULL: false,
+      validate:{
+        isString: true
       }
     },
     user_id: {

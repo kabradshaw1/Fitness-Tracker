@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
       'id',
       'qty',
       'date',
+      'distance'
     ],
     include: [
       {
@@ -23,36 +24,12 @@ router.get('/', (req, res) => {
     });
 });
 
-
-router.get('/:id', (req, res) => {
-  Distance.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'qty',
-      'date'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbDistanceData => res.json(dbDistanceData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.post('/', withAuth, (req, res) => {
   Distance.create({
     qty: req.body.qty,
-    user_id: req.body.user_id,
-    date: req.body.date
+    user_id: req.session.user_id,
+    date: req.body.date,
+    chart: req.body.chart
   })
   .then(dbDistanceData => res.json(dbDistanceData))
     .catch(err => {
