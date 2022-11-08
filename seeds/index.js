@@ -2,8 +2,9 @@ const seedHeart = require('./heart-seeds');
 const seedUsers = require('./user-seeds');
 const seedDistance = require('./distance-seeds');
 const seedSteps = require('./steps-seeds');
-const sequelize = require('../config/connection');
 const seedActive = require('./active-seeds');
+const sequelize = require('../config/connection');
+
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -12,12 +13,16 @@ const seedAll = async () => {
   console.log('--------------');
   await seedHeart();
   console.log('--------------');
+
   await seedDistance();
   console.log('--------------');
   await seedSteps();
   console.log('--------------');
   await seedActive();
   console.log('--------------');
+  await seedDistance();
+  console.log('--------------');
+  
   process.exit(0);
 };
 

@@ -3,6 +3,8 @@ const Heart = require('./Heart');
 const User = require('./User');
 const Steps = require('./Steps');
 const Distance = require('./Distance');
+;
+const Distance = require('./Distance');
 
 User.hasMany(Heart, {
   foreignKey: 'user_id'
@@ -18,6 +20,15 @@ User.hasMany(Steps, {
 });
 
 Heart.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+User.hasMany(Distance, {
+  foreignKey: 'user_id'
+});
+
+Distance.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
