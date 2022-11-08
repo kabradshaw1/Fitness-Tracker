@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
       'id',
       'qty',
       'date',
+      'chart'
     ],
     include: [
       {
@@ -23,38 +24,12 @@ router.get('/', (req, res) => {
     });
 });
 
-
-router.get('/:id', (req, res) => {
-  Active.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'date',
-      'qty'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbActiveData => res.json(dbActiveData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Mike, you are going to need to add your get route aswell.  It's going to get called
-// by the client side js to graph the data.
 router.post('/', withAuth, (req, res) => {
   Active.create({
     user_id: req.session.user_id,
     qty: req.body.qty,
-    date: req.body.date
+    date: req.body.date,
+    chart: req.body.chart
   })
   .then(dbActiveData => res.json(dbActiveData))
     .catch(err => {
