@@ -1,4 +1,4 @@
-async function heartFormHandler(event) {
+async function activeFormHandler(event) {
   event.preventDefault();
 
   const qty = document.querySelector('#qty-input').value.trim();
@@ -24,4 +24,4 @@ async function heartFormHandler(event) {
 
 document.querySelector('#active-form').addEventListener('submit', activeFormHandler);
 
-chart(180, 'active')
+chart(2200, 'active')

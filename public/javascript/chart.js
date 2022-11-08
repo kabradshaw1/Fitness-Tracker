@@ -38,5 +38,6 @@ const displayGraph = (data) => {
       .text(d => d.date)
       .attr('x', d => xScale(d.id))
       .attr('y', 395);
+      console.log(data)
 };
 }

@@ -3,8 +3,6 @@ const Heart = require('./Heart');
 const User = require('./User');
 const Steps = require('./Steps');
 const Distance = require('./Distance');
-;
-const Distance = require('./Distance');
 
 User.hasMany(Heart, {
   foreignKey: 'user_id'
