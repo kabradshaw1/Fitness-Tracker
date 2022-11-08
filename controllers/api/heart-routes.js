@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
       'id',
       'qty',
       'date',
+      // 'chart'
     ],
     include: [
       {
@@ -33,6 +34,7 @@ router.get('/:id', (req, res) => {
       'id',
       'qty',
       'date',
+      // 'chart'
     ],
     include: [
       {
@@ -52,7 +54,8 @@ router.post('/', withAuth, (req, res) => {
   Heart.create({
     qty: req.body.qty,
     user_id: req.session.user_id,
-    date: req.body.date
+    date: req.body.date,
+    chart: req.body.chart
   })
   .then(dbHeartData => res.json(dbHeartData))
     .catch(err => {

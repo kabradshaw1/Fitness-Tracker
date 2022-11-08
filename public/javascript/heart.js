@@ -3,12 +3,14 @@ async function heartFormHandler(event) {
 
   const qty = document.querySelector('#qty-input').value.trim();
   const date = new Date();
+  // const chart = 'heart'
 
   const response = await fetch('/api/heart', {
     method: 'POST',
       body: JSON.stringify({
         qty,
-        date
+        date,
+        // chart,
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -23,6 +25,7 @@ async function heartFormHandler(event) {
 };
 
 document.querySelector('#heart-form').addEventListener('submit', heartFormHandler);
-
+// first number is range, and should be a number slightly higher 
+// than your highest value in your dataset
 chart(180, 'heart')
 
