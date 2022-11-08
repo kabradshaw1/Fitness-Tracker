@@ -13,6 +13,15 @@ Steps.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
+User.hasMany(Distance, {
+  foreignKey: 'user_id'
+});
+
+Distance.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
 User.hasMany(Steps, {
   foreignKey: 'user_id'
 });

@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'qty',
-      'date',
-      'distance'
+      'date'
+     // 'distance'
     ],
     include: [
       {
@@ -29,7 +29,7 @@ router.post('/', withAuth, (req, res) => {
     qty: req.body.qty,
     user_id: req.session.user_id,
     date: req.body.date,
-    chart: req.body.chart
+   // chart: req.body.chart
 
   })
   .then(dbDistanceData => res.json(dbDistanceData))

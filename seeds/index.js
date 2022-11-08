@@ -21,7 +21,7 @@ const seedAll = async () => {
 
   await seedSteps();
   console.log('--------------');
-  
+
   await seedActive();
   console.log('--------------');
   
