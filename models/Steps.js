@@ -31,7 +31,7 @@ Steps.init(
         model: 'steps',
         key: 'id'
       }
-    }
+    },
   },
   {
     sequelize,

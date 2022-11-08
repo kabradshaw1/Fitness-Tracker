@@ -7,7 +7,8 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'qty',
-      'date',
+      'date'
+      //'steps'
     ],
     include: [
       {
@@ -33,6 +34,7 @@ router.get('/:id', (req, res) => {
       'id',
       'qty',
       'date'
+      //'steps'
     ],
     include: [
       {
@@ -51,9 +53,9 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Steps.create({
     qty: req.body.qty,
-     // please change to user_id: req.session.user_id and delete this comment
-    user_id: req.body.user_id,
-    date: req.body.date
+    user_id: req.session.user_id,
+    date: req.body.date,
+    chart: req.body.chart
   })
   .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {

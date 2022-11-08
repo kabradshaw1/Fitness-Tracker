@@ -13,7 +13,7 @@ router.get('/', withAuth, (req, res) => {
       'id',
       'qty',
       'date',
-      'distance'
+     // 'distance'
     ],
     include: [
       {

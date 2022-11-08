@@ -12,7 +12,8 @@ router.get('/', withAuth, (req, res) => {
     attributes: [
       'id',
       'qty',
-      'date',
+      'date'
+      //'steps'
     ],
     include: [
       {

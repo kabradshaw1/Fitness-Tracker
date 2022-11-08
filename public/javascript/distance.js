@@ -3,14 +3,12 @@ async function distanceFormHandler(event) {
 
   const qty = document.querySelector('#qty-input').value.trim();
   const date = new Date();
-  // const chart = 'distance'
 
   const response = await fetch('/api/distance', {
     method: 'POST',
       body: JSON.stringify({
         qty,
-        date,
-        // chart,
+        date
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -25,6 +23,5 @@ async function distanceFormHandler(event) {
 };
 
 document.querySelector('#distance-form').addEventListener('submit', distanceFormHandler);
-// first number is range, and should be a number slightly higher 
-// than your highest value in your dataset
+
 chart(10, 'distance')
