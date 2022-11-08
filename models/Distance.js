@@ -25,13 +25,6 @@ Distance.init(
         isDecimal: true
       }
     },
-    chart: {
-      type: DataTypes.STRING,
-      allowNULL: false,
-      validate:{
-        isString: true
-      }
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
