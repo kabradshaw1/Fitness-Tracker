@@ -1,9 +1,9 @@
 {{#if loggedIn}}
   <h2>Welcome {{user.username}}</h2>
+  <script>console.log(user)</script>
 {{else}}
   <h2>Welcome, please register or sign in.</h2>
 {{/if}}
-
 <a href="/heart" class="home-page-link">Heart</a>
 <a href="/active" class="home-page-link">Active</a>
 <a href="/steps" class="home-page-link">Steps</a>
