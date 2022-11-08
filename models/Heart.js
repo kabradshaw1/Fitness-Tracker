@@ -22,6 +22,13 @@ Heart.init(
         isDate: true
       }
     },
+    chart: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isString: true
+      }
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

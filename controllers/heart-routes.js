@@ -13,6 +13,7 @@ router.get('/', withAuth, (req, res) => {
       'id',
       'qty',
       'date',
+      // 'chart'
     ],
     include: [
       {
@@ -23,6 +24,7 @@ router.get('/', withAuth, (req, res) => {
   })
   .then(dbheartData => {
     const heart_rate = dbheartData.map(heart => heart.get({ plain: true }));
+    console.log(heart_rate)
     res.render('heart', { heart_rate, loggedIn: true });
   })
     .catch(err => {

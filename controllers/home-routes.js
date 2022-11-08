@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
   })
   .then(user =>{
-    res.render('homepage', user, {loggedIn: req.session.loggedIn})
+    res.render('homepage',  {user, loggedIn: req.session.loggedIn})
   })
   .catch(err => {
     console.log(err);
