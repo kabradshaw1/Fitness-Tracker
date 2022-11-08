@@ -3,6 +3,8 @@ const Heart = require('./Heart');
 const User = require('./User');
 const Steps = require('./Steps')
 const Distance = require('./Distance')
+const Steps = require('./Steps');
+
 
 User.hasMany(Heart, {
   foreignKey: 'user_id'
@@ -22,6 +24,15 @@ Heart.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
+User.hasMany(Distance, {
+  foreignKey: 'user_id'
+});
+
+Distance.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
 User.hasMany(Active, {
   foreignKey: 'user_id'
 });
@@ -31,4 +42,4 @@ Active.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
-module.exports = { Heart, User, Steps, Active, Distance};
+module.exports = { Heart, User, Steps, Active, Distance };
