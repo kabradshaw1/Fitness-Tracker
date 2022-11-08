@@ -3,85 +3,85 @@ const { Active } = require('../models');
 
 const activeData = [
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 862,
   date : "2022-09-28 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-09-29 00:00:00 -0400",
   qty : 659
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 1467,
   date : "2022-09-30 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-01 00:00:00 -0400",
   qty : 2086
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-02 00:00:00 -0400",
   qty : 1231
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-03 00:00:00 -0400",
   qty : 823
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 1410,
   date : "2022-10-04 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-05 00:00:00 -0400",
   qty : 868
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-06 00:00:00 -0400",
   qty : 865
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 960,
   date : "2022-10-07 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 966,
   date : "2022-10-08 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 569,
   date : "2022-10-09 00:00:00 -0400"
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   date : "2022-10-10 00:00:00 -0400",
   qty : 979
 },
 {
-  chart: 'active',
+  // chart: 'active',
   user_id: 1,
   qty : 899,
   date : "2022-10-11 00:00:00 -0400"

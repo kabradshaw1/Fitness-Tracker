@@ -18,12 +18,7 @@ Active.init(
         isDate: true
       }
     },
-
-    chart: {
-      type: DataTypes.STRING,
-      
-
-    },
+    
     qty: {
       type: DataTypes.INTEGER,
       allowNull: false,

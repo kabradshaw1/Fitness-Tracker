@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
       'id',
       'qty',
       'date',
-      'chart'
+      // 'chart'
     ],
     include: [
       {
