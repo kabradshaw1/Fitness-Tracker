@@ -18,8 +18,6 @@ const seedAll = async () => {
   // console.log('--------------');
   await seedDistance();
   console.log('--------------');
-  await seedSteps();
-  console.log('--------------');
   
   process.exit(0);
 };
