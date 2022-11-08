@@ -51,6 +51,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Steps.create({
     qty: req.body.qty,
+     // please change to user_id: req.session.user_id and delete this comment
     user_id: req.body.user_id,
     date: req.body.date
   })

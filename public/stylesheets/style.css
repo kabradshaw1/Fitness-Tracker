@@ -3,12 +3,10 @@
   width: 800px;
   height: 400px;
   border: 1px solid royalblue;
-  display: flex;
-  justify-content: space-around;
 }
 
 .bar {
-  background-color: royalblue;
+  fill: royalblue;
 }
 .home-page-link {
   font-size: medium;

@@ -11,8 +11,7 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'max',
-      'min',
+      'qty',
       'date',
     ],
     include: [

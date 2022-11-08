@@ -12,8 +12,9 @@ const seedAll = async () => {
   console.log('--------------');
   await seedHeart();
   console.log('--------------');
-  //await seedActive();
-  //console.log('--------------');
+
+  await seedDistance();
+  console.log('--------------');
   await seedSteps();
   console.log('--------------');
   await seedDistance();

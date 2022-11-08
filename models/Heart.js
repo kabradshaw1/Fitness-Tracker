@@ -11,32 +11,15 @@ Heart.init(
       primaryKey: true,
       autoIncrement: true
     },
-    max: {
+    qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isInteger: true
-      }
-    },
-    min: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isInteger: true
-      }
     },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
       validate: {
         isDate: true
-      }
-    },
-    avg: {
-      type: DataTypes.DECIMAL(2,0),
-      allowNull: false,
-      validate: {
-        isDecimal: true
       }
     },
     user_id: {
