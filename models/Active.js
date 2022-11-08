@@ -18,6 +18,7 @@ Active.init(
         isDate: true
       }
     },
+    
     qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
