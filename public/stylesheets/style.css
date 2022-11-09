@@ -140,3 +140,11 @@ header {
   align-items: center;
   padding: 0 1%;
 }
+.chart-max {
+  position: absolute;
+  bottom: 720px; 
+  left: 962px; 
+  z-index: 2;
+  font-size: 20px;
+  justify-content:right
+}
