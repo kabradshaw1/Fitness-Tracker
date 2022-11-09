@@ -119,14 +119,16 @@ footer {
 .bar {
   fill: royalblue;
 }
-
+h2 {
+  font-size: 50px;
+}
 #home-page-links {
   display: flex;
   flex-direction: column;
 }
 
 .home-page-link {
-  font-size: 50px;
+  font-size: 35px;
 }
 
 header {
