@@ -28,8 +28,7 @@ router.post('/', withAuth, (req, res) => {
   Active.create({
     user_id: req.session.user_id,
     qty: req.body.qty,
-    date: req.body.date,
-    chart: req.body.chart
+    date: req.body.date
   })
   .then(dbActiveData => res.json(dbActiveData))
     .catch(err => {

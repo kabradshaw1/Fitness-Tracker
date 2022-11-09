@@ -3,14 +3,13 @@ async function heartFormHandler(event) {
 
   const qty = document.querySelector('#qty-input').value.trim();
   const date = new Date();
-  // const chart = 'heart'
+
 
   const response = await fetch('/api/heart', {
     method: 'POST',
       body: JSON.stringify({
         qty,
         date,
-        // chart,
       }),
       headers: {
         'Content-Type': 'application/json'

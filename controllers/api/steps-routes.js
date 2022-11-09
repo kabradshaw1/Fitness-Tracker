@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
       'id',
       'qty',
       'date'
-      //'steps'
     ],
     include: [
       {
@@ -34,7 +33,6 @@ router.get('/:id', (req, res) => {
       'id',
       'qty',
       'date'
-      //'steps'
     ],
     include: [
       {
@@ -55,7 +53,6 @@ router.post('/', withAuth, (req, res) => {
     qty: req.body.qty,
     user_id: req.session.user_id,
     date: req.body.date,
-    chart: req.body.chart
   })
   .then(dbStepsData => res.json(dbStepsData))
     .catch(err => {

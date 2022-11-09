@@ -30,7 +30,6 @@ router.post('/', withAuth, (req, res) => {
     user_id: req.session.user_id,
     date: req.body.date,
    // chart: req.body.chart
-
   })
   .then(dbDistanceData => res.json(dbDistanceData))
     .catch(err => {
