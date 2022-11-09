@@ -12,7 +12,7 @@ body, html {
 
 a {
   text-decoration: none;
-  color: #225ca3;
+  color: royalblue;
   font-weight: bold;
   transition: color .1s;
 }
@@ -20,6 +20,7 @@ a {
 a:hover {
   color: #3486eb;
 }
+
 
 button {
   background-color: #225ca3;
@@ -74,16 +75,8 @@ form label {
   flex-direction: column;
 }
 
-header {
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1%;
-}
-
 header h1 {
-  font-size: 1em;
+  font-size: 3em;
 }
 
 main {
@@ -97,7 +90,7 @@ main {
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  color: #225ca3;
+  color: royalblue;
   font-size: 100%;
   font-weight: bold;
   transition: color .1s;
@@ -109,76 +102,15 @@ main {
   color: #3486eb;
 }
 
-.delete-post-btn {
-  background-color: #d41414;
-}
-
-.delete-post-btn:hover {
-  background-color: #ff643d;
-}
-
-.post {
-  margin-bottom: 2%;
-  line-height: 150%;
-}
-
-.post .title span {
-  font-style: italic;
-  font-size: 90%;
-  color: #7d7d7d;
-}
-
-.edit-link {
-  display: block;
-  margin: -1.5% 0 2% 0;
-}
-
-.upvote-btn {
-  background-color: #197d0f;
-  transition: background-color .1s;
-}
-
-.upvote-btn:hover {
-  background-color: #1f9c13;
-}
-
-.comment-form {
-  margin-bottom: 5%;
-}
-
-.comment {
-  padding: 1%;
-  margin-bottom: 1%;
-}
-
-.comment:nth-child(odd) {
-  background-color: #fff5eb;
-}
-
-.comment .meta {
-  font-size: 90%;
-  margin-bottom: .5%;
-  opacity: .6;
-}
-
-.new-post-form input {
-  width: 300px;
-}
-
-.edit-post-form {
-  margin-bottom: 5%;
-}
-
 footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid royalblue;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1%;
   font-size: 110%;
 }
 
 .graph {
-  /* background-color: rgb(211, 211, 218); */
   width: 800px;
   height: 400px;
   border: 1px solid royalblue;
@@ -187,6 +119,22 @@ footer {
 .bar {
   fill: royalblue;
 }
+h2 {
+  font-size: 50px;
+}
+#home-page-links {
+  display: flex;
+  flex-direction: column;
+}
+
 .home-page-link {
-  font-size: medium;
+  font-size: 35px;
+}
+
+header {
+  border-bottom: 1px solid royalblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
 }
