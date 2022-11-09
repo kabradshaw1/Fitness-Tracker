@@ -1,16 +1,16 @@
-<h3>DISTANCE - Miles walked/run per day</h3>
+{{user.username}}
+<h3>DISTANCE - Miles walked/run per day </h3>
 <svg class='graph' id="d3-container"></svg>
-<svg class="labels" id="graph-xaxies"></svg>
 <h2>New Entry</h2>
 <form id="distance-form">
   <div>
-    <label form="#qty-input">Quantity:</label>
-    <input type="text" id="#qty-input" />
+    <label for="qty-input">Max:</label>
+    <input type="text" id="qty-input" />
   </div>
+  <div>
     <button type="submit">Add</button>
   </div>
 </form>
-
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>

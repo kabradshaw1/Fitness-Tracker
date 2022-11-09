@@ -18,13 +18,9 @@ Active.init(
         isDate: true
       }
     },
-    
     qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isInteger: true
-      }
     },
     user_id: {
       type: DataTypes.INTEGER,
