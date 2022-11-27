@@ -4,46 +4,14 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Steps.findAll({
-    attributes: [
-      'id',
-      'qty',
-      'date'
-      //'steps'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    where: { user_id: req.session.user_id },
+    attributes: ['id','qty', 'date'],
+    include: [{ model: User,attributes: ['username'] }]
   })
-  .then(dbStepsData => res.json(dbStepsData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-
-router.get('/:id', (req, res) => {
-  Steps.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'qty',
-      'date'
-      //'steps'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbStepsData => res.json(dbStepsData))
+    .then(records => {
+      const dbStepsData = records.map(record => record.get({ plain: true }));
+      res.json(dbStepsData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -57,7 +25,9 @@ router.post('/', withAuth, (req, res) => {
     date: req.body.date,
     chart: req.body.chart
   })
-  .then(dbStepsData => res.json(dbStepsData))
+    .then(newRecord => {
+      res.json(newRecord.get({ plain: true }));
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -65,22 +35,18 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Steps.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(dbStepsData => {
-    if (!dbStepsData) {
-      res.status(404).json({ message: 'No post found with this id' });
-      return;
-    }
-    res.json(dbStepsData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+  Steps.destroy({ where: { id: req.params.id } })
+    .then(deletedRecord => {
+      if (!deletedRecord) {
+        res.status(404).json({ message: 'No record found with this id' });
+        return;
+      }
+      res.json(deletedRecord.get({ plain: true }));
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

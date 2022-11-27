@@ -36,6 +36,6 @@ Steps.init(
     underscored: true,
     modelName: 'steps'
   }
-)
+);
 
 module.exports = Steps;
