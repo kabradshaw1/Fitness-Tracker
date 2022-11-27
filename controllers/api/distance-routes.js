@@ -4,20 +4,14 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Distance.findAll({
-    attributes: [
-      'id',
-      'qty',
-      'date'
-     // 'distance'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    where: { user_id: req.session.user_id },
+    attributes: ['id','qty','date'],
+    include: [{ model: User, attributes: ['username'] }]
   })
-  .then(dbDistanceData => res.json(dbDistanceData))
+    .then(records => {
+      const dbDistanceData = records.map(record => record.get({ plain: true }));
+      res.json(dbDistanceData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -29,10 +23,10 @@ router.post('/', withAuth, (req, res) => {
     qty: req.body.qty,
     user_id: req.session.user_id,
     date: req.body.date,
-   // chart: req.body.chart
-
   })
-  .then(dbDistanceData => res.json(dbDistanceData))
+    .then(newRecord => {
+      res.json(newRecord.get({ plain: true }));
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -40,22 +34,18 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  Distance.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(dbDistanceData => {
-    if (!dbDistanceData) {
-      res.status(404).json({ message: 'No post found with this id' });
-      return;
-    }
-    res.json(dbDistanceData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+  Distance.destroy({ where: { id: req.params.id } })
+    .then(deletedRecord => {
+      if (!deletedRecord) {
+        res.status(404).json({ message: 'No record found with this id' });
+        return;
+      }
+      res.json(deletedRecord.get({ plain: true }));
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

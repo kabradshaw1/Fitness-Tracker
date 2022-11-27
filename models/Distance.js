@@ -39,6 +39,6 @@ Distance.init(
     underscored: true,
     modelName: 'distance'
   }
-)
+);
 
 module.exports = Distance;

@@ -6,22 +6,18 @@ async function distanceFormHandler(event) {
 
   const response = await fetch('/api/distance', {
     method: 'POST',
-      body: JSON.stringify({
-        qty,
-        date
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    body: JSON.stringify({ qty,date }),
+    headers: { 'Content-Type': 'application/json' }
   });
 
   if (response.ok) {
-    document.location.reload()
+    document.location.reload();
   } else {
-    alert(response.statusText);
+    const parsedResponse = await response.json();
+    alert(parsedResponse.statusText);
   };
 };
 
 document.querySelector('#distance-form').addEventListener('submit', distanceFormHandler);
 
-chart(10, 'distance')
+chart(10, 'distance');
