@@ -4,20 +4,14 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
   Active.findAll({
-    attributes: [
-      'id',
-      'qty',
-      'date',
-      // 'chart'
-    ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    where: { user_id: req.session.user_id },
+    attributes: ['id','qty','date'],
+    include: [{ model: User, attributes: ['username'] }]
   })
-    .then(dbActiveData => res.json(dbActiveData))
+    .then(records => {
+      const dbActiveData = records.map(record => record.get({ plain: true }));
+      res.json(dbActiveData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -31,7 +25,9 @@ router.post('/', withAuth, (req, res) => {
     date: req.body.date,
     chart: req.body.chart
   })
-  .then(dbActiveData => res.json(dbActiveData))
+    .then(newRecord => {
+      res.json(newRecord.get({ plain: true }));
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -44,17 +40,17 @@ router.delete('/:id', withAuth, (req, res) => {
       id: req.params.id
     }
   })
-  .then(dbActiveData => {
-    if (!dbActiveData) {
-      res.status(404).json({ message: 'No post found with this id' });
-      return;
-    }
-    res.json(dbActiveData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(deletedRecord => {
+      if (!deletedRecord) {
+        res.status(404).json({ message: 'No record found with this id' });
+        return;
+      }
+      res.json(deletedRecord.get({ plain: true }));
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

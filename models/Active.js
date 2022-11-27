@@ -36,6 +36,6 @@ Active.init(
     underscored: true,
     modelName: 'active'
   }
-)
+);
 
 module.exports = Active;

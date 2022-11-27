@@ -6,17 +6,12 @@ async function activeFormHandler(event) {
 
   const response = await fetch('/api/active', {
     method: 'POST',
-      body: JSON.stringify({
-        qty,
-        date
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    body: JSON.stringify({ qty, date }),
+    headers: { 'Content-Type': 'application/json' }
   });
 
   if (response.ok) {
-    document.location.reload()
+    document.location.reload();
   } else {
     alert(response.statusText);
   };
@@ -24,4 +19,4 @@ async function activeFormHandler(event) {
 
 document.querySelector('#active-form').addEventListener('submit', activeFormHandler);
 
-chart(2200, 'active')
+chart(2200, 'active');
