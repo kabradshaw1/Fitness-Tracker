@@ -22,13 +22,6 @@ Heart.init(
         isDate: true
       }
     },
-    // chart: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     isString: true
-    //   }
-    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -43,6 +36,6 @@ Heart.init(
     underscored: true,
     modelName: 'heart'
   }
-)
+);
 
 module.exports = Heart;
