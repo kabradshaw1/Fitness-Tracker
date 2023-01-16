@@ -5,7 +5,7 @@
   
   ## Table of Contents
   * [License](#license)
-  * [Deployed] (#deployed-site)
+  * [Deployed Site](#deployed-site)
   * [Built With](#built-with) 
   * [Description](#description)
   * [Installation](#installation)
