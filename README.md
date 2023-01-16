@@ -5,7 +5,7 @@
   
   ## Table of Contents
   * [License](#license)
-  * [Deployed] (#deployed-site)
+  * [Deployed Site](#deployed-site)
   * [Built With](#built-with) 
   * [Description](#description)
   * [Installation](#installation)
@@ -38,11 +38,11 @@
 
   In the cmd type in the following commands:
 
-  npm init -y
+  git clone git@github.com:kabradshaw1/Fitness-Tracker.git
 
-  npm i connect-session-sequelize dotenv express-handlebars mysql2 express-session bcrypt sequelize express
+  npm i
 
-  mysql -u <username> -p
+  mysql -u username -p
   * Put in your password
 
   In the MySQL command line type:
