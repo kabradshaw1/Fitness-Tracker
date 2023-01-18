@@ -36,6 +36,8 @@
 
   ## Installation 
 
+  Install and setup Node.js and MySQL
+
   In the cmd type in the following commands:
 
   git clone git@github.com:kabradshaw1/Fitness-Tracker.git
